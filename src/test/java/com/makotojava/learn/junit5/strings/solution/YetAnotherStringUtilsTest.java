@@ -14,18 +14,23 @@
  * limitations under the License.
  *
  */
-package com.makotojava.learn.junit5.strings;
+package com.makotojava.learn.junit5.strings.solution;
 
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertLinesMatch;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
+
+import com.makotojava.learn.junit5.strings.YetAnotherStringUtils;
 
 /**
  * Tests the YetAnotherStringUtils utility class.
@@ -38,6 +43,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(JUnitPlatform.class)
 @DisplayName("Testing YetAnotherStringUtils...")
+@Tag("solution")
 public class YetAnotherStringUtilsTest {
 
   /**
@@ -67,7 +73,7 @@ public class YetAnotherStringUtilsTest {
 
       List<String> actualTokens = YetAnotherStringUtils.tokenize(string, delimiters);
 
-      fail("Add your implementation here");
+      assertLinesMatch(expectedTokens, actualTokens);
     }
 
   }
@@ -104,25 +110,25 @@ public class YetAnotherStringUtilsTest {
       // The list that is returned is different
       //
       // Default message
-      fail("Add your implementation here");
+      assertNotSame(expectedTokens, actualTokens);
       //
       // String message (created every time)
-      fail("Add your implementation here");
+      assertNotSame(expectedTokens, actualTokens, "Expected lists to be different objects");
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
-      fail("Add your implementation here");
+      assertNotSame(expectedTokens, actualTokens, () -> "Expected lists to be different objects");
 
       // As are the strings that are returned as well
       for (int aa = 0; aa < expectedTokens.size(); aa++) {
         //
         // Default message
-        fail("Add your implementation here");
+        assertNotSame(expectedTokens.get(aa), actualTokens.get(aa));
         //
         // String message (created every time)
-        fail("Add your implementation here");
+        assertNotSame(expectedTokens.get(aa), actualTokens.get(aa), "Expected objects to be different");
         //
         // Supplier<String> message - creates String lazily (only if assertion fails)
-        fail("Add your implementation here");
+        assertNotSame(expectedTokens.get(aa), actualTokens.get(aa), "Expected objects to be different");
       }
 
     }
@@ -136,13 +142,13 @@ public class YetAnotherStringUtilsTest {
       // The strings are .equals(), but different objects
       //
       // Default message
-      fail("Add your implementation here");
+      assertNotSame(expectedString, actualString);
       //
       // String message (created every time)
-      fail("Add your implementation here");
+      assertNotSame(expectedString, actualString, "Expected strings to be the same objects");
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
-      fail("Add your implementation here");
+      assertNotSame(expectedString, actualString, () -> "Expected strings to be the same objects");
 
     }
 
@@ -172,13 +178,13 @@ public class YetAnotherStringUtilsTest {
       // The list that is returned is different
       //
       // Default message
-      fail("Add your implementation here");
+      assertSame(expectedString, actualString);
       //
       // String message (created every time)
-      fail("Add your implementation here");
+      assertSame(expectedString, actualString, "Expected strings to be the same objects");
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
-      fail("Add your implementation here");
+      assertSame(expectedString, actualString, () -> "Expected strings to be the same objects");
 
     }
 
@@ -191,13 +197,13 @@ public class YetAnotherStringUtilsTest {
       // The strings are .equals(), but different objects (or are they? no, no they're not)
       //
       // Default message
-      fail("Add your implementation here");
+      assertSame(expectedString, actualString);
       //
       // String message (created every time)
-      fail("Add your implementation here");
+      assertSame(expectedString, actualString, "Expected strings to be the same objects");
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
-      fail("Add your implementation here");
+      assertSame(expectedString, actualString, () -> "Expected strings to be the same objects");
 
     }
 

@@ -14,10 +14,20 @@
  * limitations under the License.
  *
  */
-package com.makotojava.learn.junit5.math;
+package com.makotojava.learn.junit5.math.solution;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTimeout;
+import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -27,9 +37,12 @@ import java.util.List;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
+
+import com.makotojava.learn.junit5.math.PrimeTime;
 
 /**
  * Tests the PrimeTime prime number utility class.
@@ -42,6 +55,7 @@ import org.junit.runner.RunWith;
  */
 @DisplayName("Testing PrimeTime...")
 @RunWith(JUnitPlatform.class)
+@Tag("solution")
 public class PrimeTimeTest {
 
   /**
@@ -99,13 +113,13 @@ public class PrimeTimeTest {
       long[] actualResults = PrimeTime.computeFactors(compoundInteger);
       //
       // Default message
-      fail("Add your implementation here");
+      assertArrayEquals(expectedResults, actualResults);
       //
       // String message (created every time)
-      fail("Add your implementation here");
+      assertArrayEquals(expectedResults, actualResults, generateCustomMessage(expectedResults, actualResults));
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
-      fail("Add your implementation here");
+      assertArrayEquals(expectedResults, actualResults, () -> generateCustomMessage(expectedResults, actualResults));
     }
 
     @Test
@@ -116,13 +130,13 @@ public class PrimeTimeTest {
       long[] actualResults = PrimeTime.computeFactors(compoundInteger);
       //
       // Default message
-      fail("Add your implementation here");
+      assertArrayEquals(expectedResults, actualResults);
       //
       // String message (created every time)
-      fail("Add your implementation here");
+      assertArrayEquals(expectedResults, actualResults, generateCustomMessage(expectedResults, actualResults));
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
-      fail("Add your implementation here");
+      assertArrayEquals(expectedResults, actualResults, () -> generateCustomMessage(expectedResults, actualResults));
     }
 
     @Test
@@ -138,13 +152,13 @@ public class PrimeTimeTest {
       actualResults[5] = PrimeTime.isPrime(71);
       //
       // Default message
-      fail("Add your implementation here");
+      assertArrayEquals(expectedResults, actualResults);
       //
       // String message (created every time)
-      fail("Add your implementation here");
+      assertArrayEquals(expectedResults, actualResults, generateCustomMessage(expectedResults, actualResults));
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
-      fail("Add your implementation here");
+      assertArrayEquals(expectedResults, actualResults, () -> generateCustomMessage(expectedResults, actualResults));
     }
 
     @Test
@@ -154,13 +168,13 @@ public class PrimeTimeTest {
       long[] actualResults = PrimeTime.computePrimes(10);
       //
       // Default message
-      fail("Add your implementation here");
+      assertArrayEquals(expectedResults, actualResults);
       //
       // String message (created every time)
-      fail("Add your implementation here");
+      assertArrayEquals(expectedResults, actualResults, generateCustomMessage(expectedResults, actualResults));
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
-      fail("Add your implementation here");
+      assertArrayEquals(expectedResults, actualResults, () -> generateCustomMessage(expectedResults, actualResults));
     }
 
   }
@@ -190,13 +204,18 @@ public class PrimeTimeTest {
       for (int aa = 0; aa < expectedResults.length; aa++) {
         //
         // Default message
-        fail("Add your implementation here");
+        assertEquals(expectedResults[aa], actualResults[aa]);
         //
         // String message (created every time)
-        fail("Add your implementation here");
+        assertEquals(expectedResults[aa], actualResults[aa],
+            generateCustomMessage(expectedResults[aa], actualResults[aa]));
         //
         // Supplier<String> message - creates String lazily (only if assertion fails)
-        fail("Add your implementation here");
+        {
+          int index = aa;
+          assertEquals(expectedResults[index], actualResults[index],
+              () -> generateCustomMessage(expectedResults[index], actualResults[index]));
+        }
       }
     }
 
@@ -211,13 +230,18 @@ public class PrimeTimeTest {
       for (int aa = 0; aa < expectedResults.length; aa++) {
         //
         // Default message
-        fail("Add your implementation here");
+        assertEquals(expectedResults[aa], actualResults[aa]);
         //
         // String message (created every time)
-        fail("Add your implementation here");
+        assertEquals(expectedResults[aa], actualResults[aa],
+            generateCustomMessage(expectedResults[aa], actualResults[aa]));
         //
         // Supplier<String> message - creates String lazily (only if assertion fails)
-        fail("Add your implementation here");
+        {
+          int index = aa;
+          assertEquals(expectedResults[index], actualResults[index],
+              () -> generateCustomMessage(expectedResults[index], actualResults[index]));
+        }
       }
     }
 
@@ -226,7 +250,13 @@ public class PrimeTimeTest {
     void isPrime() {
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
-      fail("Add your implementation here");
+      // The string can be a literal like below.
+      assertEquals(false, PrimeTime.isPrime(1), () -> "The number 1 is *not* prime.");
+      assertEquals(true, PrimeTime.isPrime(13), () -> "The number 13 *is* prime.");
+      assertEquals(false, PrimeTime.isPrime(21), () -> "The number 21 is *not* prime.");
+      assertEquals(false, PrimeTime.isPrime(39), () -> "The number 39 is *not* prime.");
+      assertEquals(true, PrimeTime.isPrime(53), () -> "The number 53 *is* prime.");
+      assertEquals(true, PrimeTime.isPrime(71), () -> "The number 71 *is* prime.");
 
     }
 
@@ -238,13 +268,18 @@ public class PrimeTimeTest {
       for (int aa = 0; aa < expectedResults.length; aa++) {
         //
         // Default message
-        fail("Add your implementation here");
+        assertEquals(expectedResults[aa], actualResults[aa]);
         //
         // String message (created every time)
-        fail("Add your implementation here");
+        assertEquals(expectedResults[aa], actualResults[aa],
+            generateCustomMessage(expectedResults[aa], actualResults[aa]));
         //
         // Supplier<String> message - creates String lazily (only if assertion fails)
-        fail("Add your implementation here");
+        {
+          int index = aa;
+          assertEquals(expectedResults[index], actualResults[index],
+              () -> generateCustomMessage(expectedResults[index], actualResults[index]));
+        }
       }
     }
 
@@ -274,22 +309,23 @@ public class PrimeTimeTest {
       long candidateInteger = 21;
 
       // assertFalse(boolean)
-      fail("Add your implementation here");
+      assertFalse(PrimeTime.isPrime(candidateInteger));
 
       // assertFalse(boolean, String)
-      fail("Add your implementation here");
+      assertFalse(PrimeTime.isPrime(candidateInteger), candidateInteger + " was expected *not* to be prime.");
 
       // assertFalse(BooleanSupplier)
-      fail("Add your implementation here");
+      assertFalse(() -> PrimeTime.isPrime(candidateInteger));
 
       // assertFalse(boolean, Supplier<String>)
-      fail("Add your implementation here");
+      assertFalse(PrimeTime.isPrime(candidateInteger), () -> candidateInteger + " was expected *not* to be prime.");
 
       // assertFalse(BooleanSupplier, String)
-      fail("Add your implementation here");
+      assertFalse(() -> PrimeTime.isPrime(candidateInteger), candidateInteger + " was expected *not* to be prime.");
 
       // assertFalse(BooleanSupplier, Supplier<String>)
-      fail("Add your implementation here");
+      assertFalse(() -> PrimeTime.isPrime(candidateInteger),
+          () -> candidateInteger + " was expected *not* to be prime.");
     }
 
   }
@@ -318,13 +354,15 @@ public class PrimeTimeTest {
       List<Long> actualResultsIterable = primitiveArrayAsList(PrimeTime.computeFactors(compoundInteger));
       //
       // Default message
-      fail("Add your implementation here");
+      assertIterableEquals(expectedResultsIterable, actualResultsIterable);
       //
       // String message (created every time)
-      fail("Add your implementation here");
+      assertIterableEquals(expectedResultsIterable, actualResultsIterable,
+          generateCustomMessage(expectedResultsIterable, actualResultsIterable));
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
-      fail("Add your implementation here");
+      assertIterableEquals(expectedResultsIterable, actualResultsIterable,
+          () -> generateCustomMessage(expectedResultsIterable, actualResultsIterable));
     }
 
     @Test
@@ -336,13 +374,15 @@ public class PrimeTimeTest {
       List<Long> actualResultsIterable = primitiveArrayAsList(PrimeTime.computeFactors(compoundInteger));
       //
       // Default message
-      fail("Add your implementation here");
+      assertIterableEquals(expectedResultsIterable, actualResultsIterable);
       //
       // String message (created every time)
-      fail("Add your implementation here");
+      assertIterableEquals(expectedResultsIterable, actualResultsIterable,
+          generateCustomMessage(expectedResultsIterable, actualResultsIterable));
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
-      fail("Add your implementation here");
+      assertIterableEquals(expectedResultsIterable, actualResultsIterable,
+          () -> generateCustomMessage(expectedResultsIterable, actualResultsIterable));
     }
 
     @Test
@@ -359,13 +399,15 @@ public class PrimeTimeTest {
 
       //
       // Default message
-      fail("Add your implementation here");
+      assertIterableEquals(expectedResultsIterable, actualResultsIterable);
       //
       // String message (created every time)
-      fail("Add your implementation here");
+      assertIterableEquals(expectedResultsIterable, actualResultsIterable,
+          generateCustomMessage(expectedResultsIterable, actualResultsIterable));
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
-      fail("Add your implementation here");
+      assertIterableEquals(expectedResultsIterable, actualResultsIterable,
+          () -> generateCustomMessage(expectedResultsIterable, actualResultsIterable));
     }
 
   }
@@ -391,13 +433,28 @@ public class PrimeTimeTest {
 
       //
       // Default message
-      fail("Add your implementation here");
+      assertNotEquals(true, PrimeTime.isPrime(1));
+      assertNotEquals(false, PrimeTime.isPrime(13));
+      assertNotEquals(true, PrimeTime.isPrime(21));
+      assertNotEquals(true, PrimeTime.isPrime(39));
+      assertNotEquals(false, PrimeTime.isPrime(53));
+      assertNotEquals(false, PrimeTime.isPrime(71));
       //
       // String message (created every time)
-      fail("Add your implementation here");
+      assertNotEquals(true, PrimeTime.isPrime(1), "The number 1 is *not* prime.");
+      assertNotEquals(false, PrimeTime.isPrime(13), "The number 13 *is* prime.");
+      assertNotEquals(true, PrimeTime.isPrime(21), "The number 21 is *not* prime.");
+      assertNotEquals(true, PrimeTime.isPrime(39), "The number 39 is *not* prime.");
+      assertNotEquals(false, PrimeTime.isPrime(53), "The number 53 *is* prime.");
+      assertNotEquals(false, PrimeTime.isPrime(71), "The number 71 *is* prime.");
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
-      fail("Add your implementation here");
+      assertNotEquals(true, PrimeTime.isPrime(1), () -> "The number 1 is *not* prime.");
+      assertNotEquals(false, PrimeTime.isPrime(13), () -> "The number 13 *is* prime.");
+      assertNotEquals(true, PrimeTime.isPrime(21), () -> "The number 21 is *not* prime.");
+      assertNotEquals(true, PrimeTime.isPrime(39), () -> "The number 39 is *not* prime.");
+      assertNotEquals(false, PrimeTime.isPrime(53), () -> "The number 53 *is* prime.");
+      assertNotEquals(false, PrimeTime.isPrime(71), () -> "The number 71 *is* prime.");
     }
   }
 
@@ -422,13 +479,15 @@ public class PrimeTimeTest {
       long candidateInteger = 733;
       //
       // Default message
-      fail("Add your implementation here");
+      assertNotNull(PrimeTime.computeFactors(candidateInteger));
       //
       // String message (created every time)
-      fail("Add your implementation here");
+      assertNotNull(PrimeTime.computeFactors(candidateInteger),
+          candidateInteger + " was expected to return a non-null array of factors");
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
-      fail("Add your implementation here");
+      assertNotNull(PrimeTime.computeFactors(candidateInteger),
+          () -> candidateInteger + " was expected to return a non-null array of factors");
     }
 
   }
@@ -454,13 +513,15 @@ public class PrimeTimeTest {
       long candidateInteger = 0;
       //
       // Default message
-      fail("Add your implementation here");
+      assertNull(PrimeTime.computeFactors(candidateInteger));
       //
       // String message (created every time)
-      fail("Add your implementation here");
+      assertNull(PrimeTime.computeFactors(candidateInteger),
+          candidateInteger + " was expected to return null");
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
-      fail("Add your implementation here");
+      assertNull(PrimeTime.computeFactors(candidateInteger),
+          () -> candidateInteger + " was expected to return null");
     }
 
   }
@@ -483,7 +544,7 @@ public class PrimeTimeTest {
     void isPrime() {
       //
       // If PrimeTime.isPrime() called with a negative number: IllegalArgumentException
-      fail("Add your implementation here");
+      assertThrows(IllegalArgumentException.class, () -> PrimeTime.isPrime(-100L));
     }
 
   }
@@ -513,7 +574,13 @@ public class PrimeTimeTest {
       // Set Duration to 5000ms
       Duration timeout = Duration.ofMillis(5000);
       // Uses Executable overloads
-      fail("Add your implementation here");
+      assertTimeout(timeout, () -> PrimeTime.computeFactors(compoundInteger));
+      assertTimeout(timeout, () -> PrimeTime.computeFactors(compoundInteger),
+          "Expected factorization of " + compoundInteger + " to complete before timeout of " + timeout.toMillis()
+              + "ms");
+      assertTimeout(timeout, () -> PrimeTime.computeFactors(compoundInteger),
+          () -> "Expected factorization of " + compoundInteger + " to complete before timeout of " + timeout.toMillis()
+              + "ms");
     }
 
     @Test
@@ -523,7 +590,11 @@ public class PrimeTimeTest {
       // Set timeout to 5000 ms
       Duration timeout = Duration.ofMillis(5000);
       // Uses ThrowingSupplier overloads
-      fail("Add your implementation here");
+      assertTimeout(timeout, () -> PrimeTime.computePrimes(numberOfPrimesToCompute));
+      assertTimeout(timeout, () -> PrimeTime.computePrimes(numberOfPrimesToCompute),
+          "Expected to compute " + numberOfPrimesToCompute + " before timeout of " + timeout.toMillis() + "ms");
+      assertTimeout(timeout, () -> PrimeTime.computePrimes(numberOfPrimesToCompute),
+          () -> "Expected to compute " + numberOfPrimesToCompute + " before timeout of " + timeout.toMillis() + "ms");
     }
   }
 
@@ -552,7 +623,13 @@ public class PrimeTimeTest {
       // Set Duration to 5000ms
       Duration timeout = Duration.ofMillis(5000);
       //
-      fail("Add your implementation here");
+      assertTimeoutPreemptively(timeout, () -> PrimeTime.computeFactors(compoundInteger));
+      assertTimeoutPreemptively(timeout, () -> PrimeTime.computeFactors(compoundInteger),
+          "Expected factorization of " + compoundInteger + " to complete before timeout of " + timeout.toMillis()
+              + "ms");
+      assertTimeoutPreemptively(timeout, () -> PrimeTime.computeFactors(compoundInteger),
+          () -> "Expected factorization of " + compoundInteger + " to complete before timeout of " + timeout.toMillis()
+              + "ms");
     }
 
     @Test
@@ -562,7 +639,11 @@ public class PrimeTimeTest {
       // Set timeout to 5000 ms
       Duration timeout = Duration.ofMillis(5000);
       //
-      fail("Add your implementation here");
+      assertTimeoutPreemptively(timeout, () -> PrimeTime.computePrimes(numberOfPrimesToCompute));
+      assertTimeoutPreemptively(timeout, () -> PrimeTime.computePrimes(numberOfPrimesToCompute),
+          "Expected to compute " + numberOfPrimesToCompute + " before timeout of " + timeout.toMillis() + "ms");
+      assertTimeoutPreemptively(timeout, () -> PrimeTime.computePrimes(numberOfPrimesToCompute),
+          () -> "Expected to compute " + numberOfPrimesToCompute + " before timeout of " + timeout.toMillis() + "ms");
     }
   }
 
@@ -589,24 +670,27 @@ public class PrimeTimeTest {
     public void isPrime() {
       long candidateInteger = 23;
 
-      // assertAll(
-      // assertTrue(boolean)
-      fail("Add your implementation here");
+      assertAll("Oh, look, it's a gaggle of Assertions",
+          // assertFalse(boolean)
+          () -> assertTrue(PrimeTime.isPrime(candidateInteger)),
 
-      // assertTrue(boolean, String)
-      fail("Add your implementation here");
-      // assertTrue(BooleanSupplier)
-      fail("Add your implementation here");
+          // assertFalse(boolean, String)
+          () -> assertTrue(PrimeTime.isPrime(candidateInteger), candidateInteger + " was expected to be prime."),
 
-      // assertTrue(boolean, Supplier<String>)
-      fail("Add your implementation here");
+          // assertFalse(BooleanSupplier)
+          () -> assertTrue(() -> PrimeTime.isPrime(candidateInteger)),
 
-      // assertTrue(BooleanSupplier, String)
-      fail("Add your implementation here");
+          // assertFalse(boolean, Supplier<String>)
+          () -> assertTrue(PrimeTime.isPrime(candidateInteger),
+              () -> candidateInteger + " was expected to be prime."),
 
-      // assertTrue(BooleanSupplier, Supplier<String>)
-      fail("Add your implementation here");
-      // );
+          // assertFalse(BooleanSupplier, String)
+          () -> assertTrue(() -> PrimeTime.isPrime(candidateInteger),
+              candidateInteger + " was expected to be prime."),
+
+          // assertFalse(BooleanSupplier, Supplier<String>)
+          () -> assertTrue(() -> PrimeTime.isPrime(candidateInteger),
+              () -> candidateInteger + " was expected to be prime."));
     }
 
   }

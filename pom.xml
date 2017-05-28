@@ -40,7 +40,7 @@
 				<configuration>
 					<properties>
 						<!-- <includeTags>fast</includeTags> -->
-						<excludeTags>advanced</excludeTags>
+						<excludeTags>solution</excludeTags>
 					</properties>
 				</configuration>
 				<dependencies>
