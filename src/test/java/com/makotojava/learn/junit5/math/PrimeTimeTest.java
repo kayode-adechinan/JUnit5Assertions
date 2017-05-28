@@ -98,12 +98,6 @@ public class PrimeTimeTest {
       long[] expectedResults = { 1, 733 };
       long[] actualResults = PrimeTime.computeFactors(compoundInteger);
       //
-      // Default message
-      fail("Add your implementation here");
-      //
-      // String message (created every time)
-      fail("Add your implementation here");
-      //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       fail("Add your implementation here");
     }
@@ -114,12 +108,6 @@ public class PrimeTimeTest {
       long compoundInteger = 1023;
       long[] expectedResults = { 1, 3, 11, 31, 33, 93, 341, 1023 };
       long[] actualResults = PrimeTime.computeFactors(compoundInteger);
-      //
-      // Default message
-      fail("Add your implementation here");
-      //
-      // String message (created every time)
-      fail("Add your implementation here");
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       fail("Add your implementation here");
@@ -137,12 +125,6 @@ public class PrimeTimeTest {
       actualResults[4] = PrimeTime.isPrime(53);
       actualResults[5] = PrimeTime.isPrime(71);
       //
-      // Default message
-      fail("Add your implementation here");
-      //
-      // String message (created every time)
-      fail("Add your implementation here");
-      //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       fail("Add your implementation here");
     }
@@ -152,12 +134,6 @@ public class PrimeTimeTest {
     void computePrimes() {
       long[] expectedResults = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 };
       long[] actualResults = PrimeTime.computePrimes(10);
-      //
-      // Default message
-      fail("Add your implementation here");
-      //
-      // String message (created every time)
-      fail("Add your implementation here");
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       fail("Add your implementation here");
@@ -189,12 +165,6 @@ public class PrimeTimeTest {
       assertEquals(expectedResults.length, actualResults.length);
       for (int aa = 0; aa < expectedResults.length; aa++) {
         //
-        // Default message
-        fail("Add your implementation here");
-        //
-        // String message (created every time)
-        fail("Add your implementation here");
-        //
         // Supplier<String> message - creates String lazily (only if assertion fails)
         fail("Add your implementation here");
       }
@@ -209,12 +179,6 @@ public class PrimeTimeTest {
       assertEquals(expectedResults.length, actualResults.length,
           generateCustomMessage(expectedResults.length, actualResults.length));
       for (int aa = 0; aa < expectedResults.length; aa++) {
-        //
-        // Default message
-        fail("Add your implementation here");
-        //
-        // String message (created every time)
-        fail("Add your implementation here");
         //
         // Supplier<String> message - creates String lazily (only if assertion fails)
         fail("Add your implementation here");
@@ -236,12 +200,6 @@ public class PrimeTimeTest {
       long[] expectedResults = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 };
       long[] actualResults = PrimeTime.computePrimes(10);
       for (int aa = 0; aa < expectedResults.length; aa++) {
-        //
-        // Default message
-        fail("Add your implementation here");
-        //
-        // String message (created every time)
-        fail("Add your implementation here");
         //
         // Supplier<String> message - creates String lazily (only if assertion fails)
         fail("Add your implementation here");
@@ -273,21 +231,6 @@ public class PrimeTimeTest {
     public void isPrime() {
       long candidateInteger = 21;
 
-      // assertFalse(boolean)
-      fail("Add your implementation here");
-
-      // assertFalse(boolean, String)
-      fail("Add your implementation here");
-
-      // assertFalse(BooleanSupplier)
-      fail("Add your implementation here");
-
-      // assertFalse(boolean, Supplier<String>)
-      fail("Add your implementation here");
-
-      // assertFalse(BooleanSupplier, String)
-      fail("Add your implementation here");
-
       // assertFalse(BooleanSupplier, Supplier<String>)
       fail("Add your implementation here");
     }
@@ -317,12 +260,6 @@ public class PrimeTimeTest {
 
       List<Long> actualResultsIterable = primitiveArrayAsList(PrimeTime.computeFactors(compoundInteger));
       //
-      // Default message
-      fail("Add your implementation here");
-      //
-      // String message (created every time)
-      fail("Add your implementation here");
-      //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       fail("Add your implementation here");
     }
@@ -334,12 +271,6 @@ public class PrimeTimeTest {
       List<Long> expectedResultsIterable = Arrays.asList(new Long[] { 1L, 3L, 11L, 31L, 33L, 93L, 341L, 1023L });
 
       List<Long> actualResultsIterable = primitiveArrayAsList(PrimeTime.computeFactors(compoundInteger));
-      //
-      // Default message
-      fail("Add your implementation here");
-      //
-      // String message (created every time)
-      fail("Add your implementation here");
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       fail("Add your implementation here");
@@ -357,12 +288,6 @@ public class PrimeTimeTest {
       actualResultsIterable.add(PrimeTime.isPrime(53));
       actualResultsIterable.add(PrimeTime.isPrime(71));
 
-      //
-      // Default message
-      fail("Add your implementation here");
-      //
-      // String message (created every time)
-      fail("Add your implementation here");
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       fail("Add your implementation here");
@@ -390,12 +315,6 @@ public class PrimeTimeTest {
     void isPrime() {
 
       //
-      // Default message
-      fail("Add your implementation here");
-      //
-      // String message (created every time)
-      fail("Add your implementation here");
-      //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       fail("Add your implementation here");
     }
@@ -420,12 +339,6 @@ public class PrimeTimeTest {
     @DisplayName("computeFactors of 733 should return a non-null array of factors")
     void computeFactors() {
       long candidateInteger = 733;
-      //
-      // Default message
-      fail("Add your implementation here");
-      //
-      // String message (created every time)
-      fail("Add your implementation here");
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       fail("Add your implementation here");
@@ -452,12 +365,6 @@ public class PrimeTimeTest {
     @DisplayName("computeFactors of 0 should return null")
     void computeFactors() {
       long candidateInteger = 0;
-      //
-      // Default message
-      fail("Add your implementation here");
-      //
-      // String message (created every time)
-      fail("Add your implementation here");
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       fail("Add your implementation here");
@@ -590,20 +497,6 @@ public class PrimeTimeTest {
       long candidateInteger = 23;
 
       // assertAll(
-      // assertTrue(boolean)
-      fail("Add your implementation here");
-
-      // assertTrue(boolean, String)
-      fail("Add your implementation here");
-      // assertTrue(BooleanSupplier)
-      fail("Add your implementation here");
-
-      // assertTrue(boolean, Supplier<String>)
-      fail("Add your implementation here");
-
-      // assertTrue(BooleanSupplier, String)
-      fail("Add your implementation here");
-
       // assertTrue(BooleanSupplier, Supplier<String>)
       fail("Add your implementation here");
       // );

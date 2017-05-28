@@ -263,9 +263,6 @@ public class PrimeTimeTest {
     public void isPrime() {
       long candidateInteger = 21;
 
-      // assertFalse(BooleanSupplier)
-      assertFalse(() -> PrimeTime.isPrime(candidateInteger));
-
       // assertFalse(BooleanSupplier, Supplier<String>)
       assertFalse(() -> PrimeTime.isPrime(candidateInteger),
           () -> candidateInteger + " was expected *not* to be prime.");

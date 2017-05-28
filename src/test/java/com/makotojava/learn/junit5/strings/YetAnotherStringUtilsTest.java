@@ -103,23 +103,11 @@ public class YetAnotherStringUtilsTest {
       //
       // The list that is returned is different
       //
-      // Default message
-      fail("Add your implementation here");
-      //
-      // String message (created every time)
-      fail("Add your implementation here");
-      //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       fail("Add your implementation here");
 
       // As are the strings that are returned as well
       for (int aa = 0; aa < expectedTokens.size(); aa++) {
-        //
-        // Default message
-        fail("Add your implementation here");
-        //
-        // String message (created every time)
-        fail("Add your implementation here");
         //
         // Supplier<String> message - creates String lazily (only if assertion fails)
         fail("Add your implementation here");
@@ -134,12 +122,6 @@ public class YetAnotherStringUtilsTest {
       String actualString = "this is a string of words".toUpperCase();
       //
       // The strings are .equals(), but different objects
-      //
-      // Default message
-      fail("Add your implementation here");
-      //
-      // String message (created every time)
-      fail("Add your implementation here");
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       fail("Add your implementation here");
@@ -171,12 +153,6 @@ public class YetAnotherStringUtilsTest {
       //
       // The list that is returned is different
       //
-      // Default message
-      fail("Add your implementation here");
-      //
-      // String message (created every time)
-      fail("Add your implementation here");
-      //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       fail("Add your implementation here");
 
@@ -189,12 +165,6 @@ public class YetAnotherStringUtilsTest {
       String actualString = "This is a string of words";
       //
       // The strings are .equals(), but different objects (or are they? no, no they're not)
-      //
-      // Default message
-      fail("Add your implementation here");
-      //
-      // String message (created every time)
-      fail("Add your implementation here");
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       fail("Add your implementation here");
