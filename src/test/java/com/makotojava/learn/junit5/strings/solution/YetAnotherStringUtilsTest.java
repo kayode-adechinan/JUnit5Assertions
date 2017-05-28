@@ -107,25 +107,11 @@ public class YetAnotherStringUtilsTest {
 
       List<String> actualTokens = YetAnotherStringUtils.tokenize(string, delimiters);
       //
-      // The list that is returned is different
-      //
-      // Default message
-      assertNotSame(expectedTokens, actualTokens);
-      //
-      // String message (created every time)
-      assertNotSame(expectedTokens, actualTokens, "Expected lists to be different objects");
-      //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       assertNotSame(expectedTokens, actualTokens, () -> "Expected lists to be different objects");
 
       // As are the strings that are returned as well
       for (int aa = 0; aa < expectedTokens.size(); aa++) {
-        //
-        // Default message
-        assertNotSame(expectedTokens.get(aa), actualTokens.get(aa));
-        //
-        // String message (created every time)
-        assertNotSame(expectedTokens.get(aa), actualTokens.get(aa), "Expected objects to be different");
         //
         // Supplier<String> message - creates String lazily (only if assertion fails)
         assertNotSame(expectedTokens.get(aa), actualTokens.get(aa), "Expected objects to be different");
@@ -140,12 +126,6 @@ public class YetAnotherStringUtilsTest {
       String actualString = "this is a string of words".toUpperCase();
       //
       // The strings are .equals(), but different objects
-      //
-      // Default message
-      assertNotSame(expectedString, actualString);
-      //
-      // String message (created every time)
-      assertNotSame(expectedString, actualString, "Expected strings to be the same objects");
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       assertNotSame(expectedString, actualString, () -> "Expected strings to be the same objects");
@@ -177,12 +157,6 @@ public class YetAnotherStringUtilsTest {
       //
       // The list that is returned is different
       //
-      // Default message
-      assertSame(expectedString, actualString);
-      //
-      // String message (created every time)
-      assertSame(expectedString, actualString, "Expected strings to be the same objects");
-      //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       assertSame(expectedString, actualString, () -> "Expected strings to be the same objects");
 
@@ -195,12 +169,6 @@ public class YetAnotherStringUtilsTest {
       String actualString = "This is a string of words";
       //
       // The strings are .equals(), but different objects (or are they? no, no they're not)
-      //
-      // Default message
-      assertSame(expectedString, actualString);
-      //
-      // String message (created every time)
-      assertSame(expectedString, actualString, "Expected strings to be the same objects");
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       assertSame(expectedString, actualString, () -> "Expected strings to be the same objects");
