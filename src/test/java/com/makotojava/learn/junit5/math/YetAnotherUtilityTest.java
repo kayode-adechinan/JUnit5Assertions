@@ -16,8 +16,7 @@
  */
 package com.makotojava.learn.junit5.math;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -42,7 +41,7 @@ import org.junit.runner.RunWith;
  */
 @DisplayName("Testing PrimeTime...")
 @RunWith(JUnitPlatform.class)
-public class PrimeTimeTest {
+public class YetAnotherUtilityTest {
 
   /**
    * Generates a custom message using ReflectionToStringBuilder.
@@ -96,7 +95,7 @@ public class PrimeTimeTest {
     void computeFactorsOfPrime() {
       long compoundInteger = 733;
       long[] expectedResults = { 1, 733 };
-      long[] actualResults = PrimeTime.computeFactors(compoundInteger);
+      long[] actualResults = YetAnotherUtility.computeFactors(compoundInteger);
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       fail("Add your implementation here");
@@ -107,7 +106,7 @@ public class PrimeTimeTest {
     void computeFactorsOfNonPrime() {
       long compoundInteger = 1023;
       long[] expectedResults = { 1, 3, 11, 31, 33, 93, 341, 1023 };
-      long[] actualResults = PrimeTime.computeFactors(compoundInteger);
+      long[] actualResults = YetAnotherUtility.computeFactors(compoundInteger);
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       fail("Add your implementation here");
@@ -118,22 +117,23 @@ public class PrimeTimeTest {
     void isPrime() {
       boolean[] expectedResults = { false, true, false, false, true, true };
       boolean[] actualResults = new boolean[6];
-      actualResults[0] = PrimeTime.isPrime(1);
-      actualResults[1] = PrimeTime.isPrime(13);
-      actualResults[2] = PrimeTime.isPrime(21);
-      actualResults[3] = PrimeTime.isPrime(39);
-      actualResults[4] = PrimeTime.isPrime(53);
-      actualResults[5] = PrimeTime.isPrime(71);
+      actualResults[0] = YetAnotherUtility.isPrime(1);
+      actualResults[1] = YetAnotherUtility.isPrime(13);
+      actualResults[2] = YetAnotherUtility.isPrime(21);
+      actualResults[3] = YetAnotherUtility.isPrime(39);
+      actualResults[4] = YetAnotherUtility.isPrime(53);
+      actualResults[5] = YetAnotherUtility.isPrime(71);
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       fail("Add your implementation here");
+    		  
     }
 
     @Test
     @DisplayName("computePrimes for 10 primes returns 2, 3, 5, 7, 11, 13, 17, 19, 23, 29")
     void computePrimes() {
       long[] expectedResults = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 };
-      long[] actualResults = PrimeTime.computePrimes(10);
+      long[] actualResults = YetAnotherUtility.computePrimes(10);
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       fail("Add your implementation here");
@@ -161,7 +161,7 @@ public class PrimeTimeTest {
     void computeFactorsOfPrime() {
       long compoundInteger = 733;
       long[] expectedResults = { 1, 733 };
-      long[] actualResults = PrimeTime.computeFactors(compoundInteger);
+      long[] actualResults = YetAnotherUtility.computeFactors(compoundInteger);
       assertEquals(expectedResults.length, actualResults.length);
       for (int aa = 0; aa < expectedResults.length; aa++) {
         //
@@ -175,7 +175,7 @@ public class PrimeTimeTest {
     void computeFactorsOfNonPrime() {
       long compoundInteger = 1023;
       long[] expectedResults = { 1, 3, 11, 31, 33, 93, 341, 1023 };
-      long[] actualResults = PrimeTime.computeFactors(compoundInteger);
+      long[] actualResults = YetAnotherUtility.computeFactors(compoundInteger);
       assertEquals(expectedResults.length, actualResults.length,
           generateCustomMessage(expectedResults.length, actualResults.length));
       for (int aa = 0; aa < expectedResults.length; aa++) {
@@ -198,7 +198,7 @@ public class PrimeTimeTest {
     @DisplayName("computePrimes for 10 primes returns 2, 3, 5, 7, 11, 13, 17, 19, 23, 29")
     void computePrimes() {
       long[] expectedResults = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 };
-      long[] actualResults = PrimeTime.computePrimes(10);
+      long[] actualResults = YetAnotherUtility.computePrimes(10);
       for (int aa = 0; aa < expectedResults.length; aa++) {
         //
         // Supplier<String> message - creates String lazily (only if assertion fails)
@@ -258,7 +258,7 @@ public class PrimeTimeTest {
       long compoundInteger = 733;
       List<Long> expectedResultsIterable = Arrays.asList(new Long[] { 1L, 733L });
 
-      List<Long> actualResultsIterable = primitiveArrayAsList(PrimeTime.computeFactors(compoundInteger));
+      List<Long> actualResultsIterable = primitiveArrayAsList(YetAnotherUtility.computeFactors(compoundInteger));
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       fail("Add your implementation here");
@@ -270,7 +270,7 @@ public class PrimeTimeTest {
       long compoundInteger = 1023;
       List<Long> expectedResultsIterable = Arrays.asList(new Long[] { 1L, 3L, 11L, 31L, 33L, 93L, 341L, 1023L });
 
-      List<Long> actualResultsIterable = primitiveArrayAsList(PrimeTime.computeFactors(compoundInteger));
+      List<Long> actualResultsIterable = primitiveArrayAsList(YetAnotherUtility.computeFactors(compoundInteger));
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       fail("Add your implementation here");
@@ -281,15 +281,47 @@ public class PrimeTimeTest {
     void isPrime() {
       List<Boolean> expectedResultsIterable = Arrays.asList(new Boolean[] { false, true, false, false, true, true });
       List<Boolean> actualResultsIterable = new ArrayList<>();
-      actualResultsIterable.add(PrimeTime.isPrime(1));
-      actualResultsIterable.add(PrimeTime.isPrime(13));
-      actualResultsIterable.add(PrimeTime.isPrime(21));
-      actualResultsIterable.add(PrimeTime.isPrime(39));
-      actualResultsIterable.add(PrimeTime.isPrime(53));
-      actualResultsIterable.add(PrimeTime.isPrime(71));
+      actualResultsIterable.add(YetAnotherUtility.isPrime(1));
+      actualResultsIterable.add(YetAnotherUtility.isPrime(13));
+      actualResultsIterable.add(YetAnotherUtility.isPrime(21));
+      actualResultsIterable.add(YetAnotherUtility.isPrime(39));
+      actualResultsIterable.add(YetAnotherUtility.isPrime(53));
+      actualResultsIterable.add(YetAnotherUtility.isPrime(71));
 
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
+      fail("Add your implementation here");
+    }
+
+  }
+
+  /**
+   * @Nested class
+   *         Uses Assertions.assertLinesMatch():
+   *         <ul>
+   *         <li>assertLinesMatch(List&lt;String&gt;, List&lt;String&gt;)</li>
+   *         </ul>
+   * @author J Steven Perry
+   *
+   */
+  @Nested
+  @DisplayName("When using assertLinesMatch")
+  public class AssertLinesMatch {
+
+    @Test
+    @DisplayName("tokenize returns the correct tokens from the test string...")
+    public void testTokenize() {
+      String string = "This is a string of words,delimited by spaces, and, well, commas. Oh, and periods too.";
+      String delimiters = " ,.";
+
+      List<String> expectedTokens = Arrays.asList(new String[] {
+          "This", "is", "a", "string", "of", "words", "delimited",
+          "by", "spaces", "and", "well", "commas", "Oh",
+          "and", "periods", "too"
+      });
+
+      List<String> actualTokens = YetAnotherUtility.tokenize(string, delimiters);
+
       fail("Add your implementation here");
     }
 
@@ -342,6 +374,64 @@ public class PrimeTimeTest {
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       fail("Add your implementation here");
+    }
+
+  }
+
+  /**
+   * @Nested class
+   *         Uses Assertions.assertNotSame():
+   *         <ul>
+   *         <li>assertNotSame(Object)</li>
+   *         <li>assertNotSame(Object, String)</li>
+   *         <li>assertNotSame(Object, Supplier&lt;String&gt;)</li>
+   *         </ul>
+   * @author J Steven Perry
+   *
+   */
+  @Nested
+  @DisplayName("When using assertNotSame")
+  public class AssertNotSame {
+
+    @Test
+    @DisplayName("tokenize returns the correct tokens from the test string...")
+    public void testTokenize() {
+      String string = "This is a string of words,delimited by spaces, and, well, commas. Oh, and periods too.";
+      String delimiters = " ,.";
+
+      List<String> expectedTokens = Arrays.asList(new String[] {
+          "This", "is", "a", "string", "of", "words", "delimited",
+          "by", "spaces", "and", "well", "commas", "Oh",
+          "and", "periods", "too"
+      });
+
+      List<String> actualTokens = YetAnotherUtility.tokenize(string, delimiters);
+      //
+      // The list that is returned is different
+      //
+      // Supplier<String> message - creates String lazily (only if assertion fails)
+      fail("Add your implementation here");
+
+      // As are the strings that are returned as well
+      for (int aa = 0; aa < expectedTokens.size(); aa++) {
+        //
+        // Supplier<String> message - creates String lazily (only if assertion fails)
+        fail("Add your implementation here");
+      }
+
+    }
+
+    @Test
+    @DisplayName("Different references to the same string are the same object...")
+    public void testAssertNotSame() {
+      String expectedString = "this is a string of words".toUpperCase();
+      String actualString = "this is a string of words".toUpperCase();
+      //
+      // The strings are .equals(), but different objects
+      //
+      // Supplier<String> message - creates String lazily (only if assertion fails)
+      fail("Add your implementation here");
+
     }
 
   }
@@ -500,6 +590,49 @@ public class PrimeTimeTest {
       // assertTrue(BooleanSupplier, Supplier<String>)
       fail("Add your implementation here");
       // );
+    }
+
+  }
+
+  /**
+   * @Nested class
+   *         Uses Assertions.assertSame():
+   *         <ul>
+   *         <li>assertSame(Object)</li>
+   *         <li>assertSame(Object, String)</li>
+   *         <li>assertSame(Object, Supplier&lt;String&gt;)</li>
+   *         </ul>
+   * @author J Steven Perry
+   *
+   */
+  @Nested
+  @DisplayName("When using assertSame")
+  public class AssertSame {
+
+    @Test
+    @DisplayName("Different references to the same string are the same object...")
+    public void testAssertSame() {
+      String expectedString = "This is a string of words,delimited by spaces, and, well, commas. Oh, and periods too.";
+      String actualString = expectedString;
+      //
+      // The list that is returned is different
+      //
+      // Supplier<String> message - creates String lazily (only if assertion fails)
+      fail("Add your implementation here");
+
+    }
+
+    @Test
+    @DisplayName("Different references to the same string are the same object...")
+    public void testAssertSameWithStringLiterals() {
+      String expectedString = "This is a string of words";
+      String actualString = "This is a string of words";
+      //
+      // The strings are .equals(), but different objects (or are they? no, no they're not)
+      //
+      // Supplier<String> message - creates String lazily (only if assertion fails)
+      fail("Add your implementation here");
+
     }
 
   }

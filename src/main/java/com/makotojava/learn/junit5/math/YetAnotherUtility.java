@@ -20,15 +20,17 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.StringTokenizer;
 import java.util.TreeSet;
 
 /**
- * Simple brute-force prime number calculator, and ancillary utilities.
+ * Simple set of utilities. Just something to demonstrate tests.
+ * Nothing more.
  * 
  * @author J Steven Perry
  *
  */
-public class PrimeTime {
+public class YetAnotherUtility {
 
   /**
    * 
@@ -118,7 +120,7 @@ public class PrimeTime {
       List<Long> primes = new ArrayList<>();
       int numberOfPrimesSoFar = 0;
       for (long candidatePrime = 1; candidatePrime < Integer.MAX_VALUE; candidatePrime++) {
-        if (PrimeTime.isPrime(candidatePrime)) {
+        if (YetAnotherUtility.isPrime(candidatePrime)) {
           primes.add(candidatePrime);
           numberOfPrimesSoFar++;
         }
@@ -131,6 +133,31 @@ public class PrimeTime {
       for (int aa = 0; aa < primes.size(); aa++) {
         ret[aa] = primes.get(aa);
       }
+    }
+
+    return ret;
+  }
+
+  /**
+   * Tokenize the specified string parameter, delimited by
+   * the specified delimiters, and return the tokens in a
+   * List&lt;String&gt;
+   * 
+   * @param string
+   *          The string to tokenize
+   * 
+   * @param delimiters
+   *          The delimiters that are used to break the string up into tokens.
+   * 
+   * @return List&lt;String&gt; - the List of Strings, one List element per token. The List will be empty if no tokens
+   *         were found.
+   */
+  public static List<String> tokenize(String string, String delimiters) {
+    List<String> ret = new ArrayList<>();
+
+    StringTokenizer strtok = new StringTokenizer(string, delimiters);
+    while (strtok.hasMoreTokens()) {
+      ret.add(strtok.nextToken());
     }
 
     return ret;

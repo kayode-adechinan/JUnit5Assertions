@@ -35,7 +35,7 @@ TEST_CLASSES_ROOT=./target/classes:./target/test-classes/
 echo TEST_CLASSES_ROOT=${TEST_CLASSES_ROOT}
 #
 #EXCLUDE_TAGS='--exclude-tag advanced --exclude-tag someothertag'
-EXCLUDE_TAGS='--exclude-tag solution'
+#EXCLUDE_TAGS='--exclude-tag solution'
 echo EXCLUDE_TAGS=${EXCLUDE_TAGS}
 #
 echo Running Maven build to get things set up...
