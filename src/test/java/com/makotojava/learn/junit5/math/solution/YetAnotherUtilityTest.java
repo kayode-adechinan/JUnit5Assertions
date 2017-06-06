@@ -31,7 +31,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTimeout;
 import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -49,7 +48,7 @@ import org.junit.runner.RunWith;
 import com.makotojava.learn.junit5.math.YetAnotherUtility;
 
 /**
- * Tests the PrimeTime prime number utility class.
+ * Tests the YetAnotherUtilityTest utility class.
  * 
  * Demonstrates most of the methods and variants of the Jupiter
  * {@link org.junit.jupiter.api.Assertions Assertions} class.
@@ -57,7 +56,7 @@ import com.makotojava.learn.junit5.math.YetAnotherUtility;
  * @author J Steven Perry
  *
  */
-@DisplayName("Testing PrimeTime...")
+@DisplayName("Testing YetAnotherUtilityTest...")
 @RunWith(JUnitPlatform.class)
 @Tag("solution")
 public class YetAnotherUtilityTest {
@@ -466,7 +465,7 @@ public class YetAnotherUtilityTest {
     }
 
     @Test
-    @DisplayName("Different references to the same string are the same object...")
+    @DisplayName("Different references to the same string are NOT the same object...")
     public void testAssertNotSame() {
       String expectedString = "this is a string of words".toUpperCase();
       String actualString = "this is a string of words".toUpperCase();
@@ -503,6 +502,49 @@ public class YetAnotherUtilityTest {
       // Supplier<String> message - creates String lazily (only if assertion fails)
       assertNull(YetAnotherUtility.computeFactors(candidateInteger),
           () -> candidateInteger + " was expected to return null");
+    }
+
+  }
+
+  /**
+   * @Nested class
+   *         Uses Assertions.assertSame():
+   *         <ul>
+   *         <li>assertSame(Object)</li>
+   *         <li>assertSame(Object, String)</li>
+   *         <li>assertSame(Object, Supplier&lt;String&gt;)</li>
+   *         </ul>
+   * @author J Steven Perry
+   *
+   */
+  @Nested
+  @DisplayName("When using assertSame")
+  public class AssertSame {
+
+    @Test
+    @DisplayName("Different references to the same string are the same object...")
+    public void testAssertSame() {
+      String expectedString = "This is a string of words,delimited by spaces, and, well, commas. Oh, and periods too.";
+      String actualString = expectedString;
+      //
+      // The list that is returned is different
+      //
+      // Supplier<String> message - creates String lazily (only if assertion fails)
+      assertSame(expectedString, actualString, () -> "Expected strings to be the same objects");
+
+    }
+
+    @Test
+    @DisplayName("Different references to the same string are the same object...")
+    public void testAssertSameWithStringLiterals() {
+      String expectedString = "This is a string of words";
+      String actualString = "This is a string of words";
+      //
+      // The strings are .equals(), but different objects (or are they? no, no they're not)
+      //
+      // Supplier<String> message - creates String lazily (only if assertion fails)
+      assertSame(expectedString, actualString, () -> "Expected strings to be the same objects");
+
     }
 
   }
@@ -643,49 +685,6 @@ public class YetAnotherUtilityTest {
           // AssertTrue(BooleanSupplier, Supplier<String>)
           () -> assertTrue(() -> YetAnotherUtility.isPrime(candidateInteger),
               () -> candidateInteger + " was expected to be prime."));
-    }
-
-  }
-
-  /**
-   * @Nested class
-   *         Uses Assertions.assertSame():
-   *         <ul>
-   *         <li>assertSame(Object)</li>
-   *         <li>assertSame(Object, String)</li>
-   *         <li>assertSame(Object, Supplier&lt;String&gt;)</li>
-   *         </ul>
-   * @author J Steven Perry
-   *
-   */
-  @Nested
-  @DisplayName("When using assertSame")
-  public class AssertSame {
-
-    @Test
-    @DisplayName("Different references to the same string are the same object...")
-    public void testAssertSame() {
-      String expectedString = "This is a string of words,delimited by spaces, and, well, commas. Oh, and periods too.";
-      String actualString = expectedString;
-      //
-      // The list that is returned is different
-      //
-      // Supplier<String> message - creates String lazily (only if assertion fails)
-      assertSame(expectedString, actualString, () -> "Expected strings to be the same objects");
-
-    }
-
-    @Test
-    @DisplayName("Different references to the same string are the same object...")
-    public void testAssertSameWithStringLiterals() {
-      String expectedString = "This is a string of words";
-      String actualString = "This is a string of words";
-      //
-      // The strings are .equals(), but different objects (or are they? no, no they're not)
-      //
-      // Supplier<String> message - creates String lazily (only if assertion fails)
-      assertSame(expectedString, actualString, () -> "Expected strings to be the same objects");
-
     }
 
   }
