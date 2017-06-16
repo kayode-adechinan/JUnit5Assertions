@@ -21,8 +21,6 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
-import static org.junit.jupiter.api.Assertions.assertLinesMatch;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -130,32 +128,6 @@ public class YetAnotherUtilityTest {
       assertArrayEquals(expectedResults, actualResults, () -> generateCustomMessage(expectedResults, actualResults));
     }
 
-    @Test
-    @DisplayName("isPrime for 1, 13, 21, 39, 53, 71 should return boolean[] = { false, true, false, false, true, true }")
-    void isPrime() {
-      boolean[] expectedResults = { false, true, false, false, true, true };
-      boolean[] actualResults = new boolean[6];
-      actualResults[0] = YetAnotherUtility.isPrime(1);
-      actualResults[1] = YetAnotherUtility.isPrime(13);
-      actualResults[2] = YetAnotherUtility.isPrime(21);
-      actualResults[3] = YetAnotherUtility.isPrime(39);
-      actualResults[4] = YetAnotherUtility.isPrime(53);
-      actualResults[5] = YetAnotherUtility.isPrime(71);
-      //
-      // Supplier<String> message - creates String lazily (only if assertion fails)
-      assertArrayEquals(expectedResults, actualResults, () -> generateCustomMessage(expectedResults, actualResults));
-    }
-
-    @Test
-    @DisplayName("computePrimes for 10 primes returns 2, 3, 5, 7, 11, 13, 17, 19, 23, 29")
-    void computePrimes() {
-      long[] expectedResults = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 };
-      long[] actualResults = YetAnotherUtility.computePrimes(10);
-      //
-      // Supplier<String> message - creates String lazily (only if assertion fails)
-      assertArrayEquals(expectedResults, actualResults, () -> generateCustomMessage(expectedResults, actualResults));
-    }
-
   }
 
   /**
@@ -210,37 +182,6 @@ public class YetAnotherUtilityTest {
       }
     }
 
-    @Test
-    @DisplayName("isPrime for 1, 13, 21, 39, 53, 71 should be false, true, false, false, true, true")
-    void isPrime() {
-      //
-      // Supplier<String> message - creates String lazily (only if assertion fails)
-      // The string can be a literal like below.
-      assertEquals(false, YetAnotherUtility.isPrime(1), () -> "The number 1 is *not* prime.");
-      assertEquals(true, YetAnotherUtility.isPrime(13), () -> "The number 13 *is* prime.");
-      assertEquals(false, YetAnotherUtility.isPrime(21), () -> "The number 21 is *not* prime.");
-      assertEquals(false, YetAnotherUtility.isPrime(39), () -> "The number 39 is *not* prime.");
-      assertEquals(true, YetAnotherUtility.isPrime(53), () -> "The number 53 *is* prime.");
-      assertEquals(true, YetAnotherUtility.isPrime(71), () -> "The number 71 *is* prime.");
-
-    }
-
-    @Test
-    @DisplayName("computePrimes for 10 primes returns 2, 3, 5, 7, 11, 13, 17, 19, 23, 29")
-    void computePrimes() {
-      long[] expectedResults = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 };
-      long[] actualResults = YetAnotherUtility.computePrimes(10);
-      for (int aa = 0; aa < expectedResults.length; aa++) {
-        //
-        // Supplier<String> message - creates String lazily (only if assertion fails)
-        {
-          int index = aa;
-          assertEquals(expectedResults[index], actualResults[index],
-              () -> generateCustomMessage(expectedResults[index], actualResults[index]));
-        }
-      }
-    }
-
   }
 
   /**
@@ -267,7 +208,7 @@ public class YetAnotherUtilityTest {
       long candidateInteger = 21;
 
       // assertFalse(BooleanSupplier, Supplier<String>)
-      assertFalse(() -> YetAnotherUtility.isPrime(candidateInteger),
+      assertFalse(() -> YetAnotherUtility.computeFactors(candidateInteger).length == 2,
           () -> candidateInteger + " was expected *not* to be prime.");
     }
 
@@ -314,86 +255,6 @@ public class YetAnotherUtilityTest {
           () -> generateCustomMessage(expectedResultsIterable, actualResultsIterable));
     }
 
-    @Test
-    @DisplayName("isPrime for 1, 13, 21, 39, 53, 71 should be = false, true, false, false, true, true ")
-    void isPrime() {
-      List<Boolean> expectedResultsIterable = Arrays.asList(new Boolean[] { false, true, false, false, true, true });
-      List<Boolean> actualResultsIterable = new ArrayList<>();
-      actualResultsIterable.add(YetAnotherUtility.isPrime(1));
-      actualResultsIterable.add(YetAnotherUtility.isPrime(13));
-      actualResultsIterable.add(YetAnotherUtility.isPrime(21));
-      actualResultsIterable.add(YetAnotherUtility.isPrime(39));
-      actualResultsIterable.add(YetAnotherUtility.isPrime(53));
-      actualResultsIterable.add(YetAnotherUtility.isPrime(71));
-
-      //
-      // Supplier<String> message - creates String lazily (only if assertion fails)
-      assertIterableEquals(expectedResultsIterable, actualResultsIterable,
-          () -> generateCustomMessage(expectedResultsIterable, actualResultsIterable));
-    }
-
-  }
-
-  /**
-   * @Nested class
-   *         Uses Assertions.assertLinesMatch():
-   *         <ul>
-   *         <li>assertLinesMatch(List&lt;String&gt;, List&lt;String&gt;)</li>
-   *         </ul>
-   * @author J Steven Perry
-   *
-   */
-  @Nested
-  @DisplayName("When using assertLinesMatch")
-  public class AssertLinesMatch {
-
-    @Test
-    @DisplayName("tokenize returns the correct tokens from the test string...")
-    public void testTokenize() {
-      String string = "This is a string of words,delimited by spaces, and, well, commas. Oh, and periods too.";
-      String delimiters = " ,.";
-
-      List<String> expectedTokens = Arrays.asList(new String[] {
-          "This", "is", "a", "string", "of", "words", "delimited",
-          "by", "spaces", "and", "well", "commas", "Oh",
-          "and", "periods", "too"
-      });
-
-      List<String> actualTokens = YetAnotherUtility.tokenize(string, delimiters);
-
-      assertLinesMatch(expectedTokens, actualTokens);
-    }
-
-  }
-
-  /**
-   * @Nested class
-   *         Uses Assertions.assertNotEquals():
-   *         <ul>
-   *         <li>assertNotEquals(Object)</li>
-   *         <li>assertNotEquals(Object, String)</li>
-   *         <li>assertNotEquals(Object, Supplier&lt;String&gt;)</li>
-   *         </ul>
-   * @author J Steven Perry
-   *
-   */
-  @Nested
-  @DisplayName("When using assertNotEquals...")
-  public class AssertNotEquals {
-
-    @Test
-    @DisplayName("isPrime for 1, 13, 21, 39, 53, 71 should be = false, true, false, false, true, true ")
-    void isPrime() {
-
-      //
-      // Supplier<String> message - creates String lazily (only if assertion fails)
-      assertNotEquals(true, YetAnotherUtility.isPrime(1), () -> "The number 1 is *not* prime.");
-      assertNotEquals(false, YetAnotherUtility.isPrime(13), () -> "The number 13 *is* prime.");
-      assertNotEquals(true, YetAnotherUtility.isPrime(21), () -> "The number 21 is *not* prime.");
-      assertNotEquals(true, YetAnotherUtility.isPrime(39), () -> "The number 39 is *not* prime.");
-      assertNotEquals(false, YetAnotherUtility.isPrime(53), () -> "The number 53 *is* prime.");
-      assertNotEquals(false, YetAnotherUtility.isPrime(71), () -> "The number 71 *is* prime.");
-    }
   }
 
   /**
@@ -437,32 +298,6 @@ public class YetAnotherUtilityTest {
   @Nested
   @DisplayName("When using assertNotSame")
   public class AssertNotSame {
-
-    @Test
-    @DisplayName("tokenize returns the correct tokens from the test string...")
-    public void testTokenize() {
-      String string = "This is a string of words,delimited by spaces, and, well, commas. Oh, and periods too.";
-      String delimiters = " ,.";
-
-      List<String> expectedTokens = Arrays.asList(new String[] {
-          "This", "is", "a", "string", "of", "words", "delimited",
-          "by", "spaces", "and", "well", "commas", "Oh",
-          "and", "periods", "too"
-      });
-
-      List<String> actualTokens = YetAnotherUtility.tokenize(string, delimiters);
-      //
-      // Supplier<String> message - creates String lazily (only if assertion fails)
-      assertNotSame(expectedTokens, actualTokens, () -> "Expected lists to be different objects");
-
-      // As are the strings that are returned as well
-      for (int aa = 0; aa < expectedTokens.size(); aa++) {
-        //
-        // Supplier<String> message - creates String lazily (only if assertion fails)
-        assertNotSame(expectedTokens.get(aa), actualTokens.get(aa), "Expected objects to be different");
-      }
-
-    }
 
     @Test
     @DisplayName("Different references to the same string are NOT the same object...")
@@ -559,15 +394,15 @@ public class YetAnotherUtilityTest {
    *
    */
   @Nested
-  @DisplayName("When using assertTimeout...")
+  @DisplayName("When using assertThrows...")
   public class AssertThrows {
 
     @Test
-    @DisplayName("isPrime with negative number throws IllegalArgumentException")
-    void isPrime() {
+    @DisplayName("computeFactors with negative number throws IllegalArgumentException")
+    void computeFactors() {
       //
       // If PrimeTime.isPrime() called with a negative number: IllegalArgumentException
-      assertThrows(IllegalArgumentException.class, () -> YetAnotherUtility.isPrime(-100L));
+      assertThrows(IllegalArgumentException.class, () -> YetAnotherUtility.computeFactors(-100L));
     }
 
   }
@@ -601,15 +436,6 @@ public class YetAnotherUtilityTest {
               + "ms");
     }
 
-    @Test
-    @DisplayName("isPrime with 2000 primes completes before 5000ms")
-    void isPrime() {
-      int numberOfPrimesToCompute = 2000;
-      // Set timeout to 5000 ms
-      Duration timeout = Duration.ofMillis(5000);
-      assertTimeout(timeout, () -> YetAnotherUtility.computePrimes(numberOfPrimesToCompute),
-          () -> "Expected to compute " + numberOfPrimesToCompute + " before timeout of " + timeout.toMillis() + "ms");
-    }
   }
 
   /**
@@ -642,16 +468,6 @@ public class YetAnotherUtilityTest {
               + "ms");
     }
 
-    @Test
-    @DisplayName("isPrime with 2000 primes completes before 5000ms")
-    void isPrime() {
-      int numberOfPrimesToCompute = 2000;
-      // Set timeout to 5000 ms
-      Duration timeout = Duration.ofMillis(5000);
-      //
-      assertTimeoutPreemptively(timeout, () -> YetAnotherUtility.computePrimes(numberOfPrimesToCompute),
-          () -> "Expected to compute " + numberOfPrimesToCompute + " before timeout of " + timeout.toMillis() + "ms");
-    }
   }
 
   /**
@@ -679,11 +495,11 @@ public class YetAnotherUtilityTest {
 
       assertAll("Oh, look, it's a gaggle of Assertions",
           // AssertTrue(BooleanSupplier, String)
-          () -> assertTrue(() -> YetAnotherUtility.isPrime(candidateInteger),
+          () -> assertTrue(() -> YetAnotherUtility.computeFactors(candidateInteger).length == 2,
               candidateInteger + " was expected to be prime."),
 
-          // AssertTrue(BooleanSupplier, Supplier<String>)
-          () -> assertTrue(() -> YetAnotherUtility.isPrime(candidateInteger),
+          // AssertFalse(BooleanSupplier, Supplier<String>)
+          () -> assertFalse(() -> YetAnotherUtility.computeFactors(candidateInteger).length > 2,
               () -> candidateInteger + " was expected to be prime."));
     }
 

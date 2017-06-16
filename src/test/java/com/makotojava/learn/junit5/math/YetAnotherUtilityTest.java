@@ -16,7 +16,8 @@
  */
 package com.makotojava.learn.junit5.math;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -112,33 +113,6 @@ public class YetAnotherUtilityTest {
       fail("Add your implementation here");
     }
 
-    @Test
-    @DisplayName("isPrime for 1, 13, 21, 39, 53, 71 should return boolean[] = { false, true, false, false, true, true }")
-    void isPrime() {
-      boolean[] expectedResults = { false, true, false, false, true, true };
-      boolean[] actualResults = new boolean[6];
-      actualResults[0] = YetAnotherUtility.isPrime(1);
-      actualResults[1] = YetAnotherUtility.isPrime(13);
-      actualResults[2] = YetAnotherUtility.isPrime(21);
-      actualResults[3] = YetAnotherUtility.isPrime(39);
-      actualResults[4] = YetAnotherUtility.isPrime(53);
-      actualResults[5] = YetAnotherUtility.isPrime(71);
-      //
-      // Supplier<String> message - creates String lazily (only if assertion fails)
-      fail("Add your implementation here");
-    		  
-    }
-
-    @Test
-    @DisplayName("computePrimes for 10 primes returns 2, 3, 5, 7, 11, 13, 17, 19, 23, 29")
-    void computePrimes() {
-      long[] expectedResults = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 };
-      long[] actualResults = YetAnotherUtility.computePrimes(10);
-      //
-      // Supplier<String> message - creates String lazily (only if assertion fails)
-      fail("Add your implementation here");
-    }
-
   }
 
   /**
@@ -192,18 +166,6 @@ public class YetAnotherUtilityTest {
       // Supplier<String> message - creates String lazily (only if assertion fails)
       fail("Add your implementation here");
 
-    }
-
-    @Test
-    @DisplayName("computePrimes for 10 primes returns 2, 3, 5, 7, 11, 13, 17, 19, 23, 29")
-    void computePrimes() {
-      long[] expectedResults = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 };
-      long[] actualResults = YetAnotherUtility.computePrimes(10);
-      for (int aa = 0; aa < expectedResults.length; aa++) {
-        //
-        // Supplier<String> message - creates String lazily (only if assertion fails)
-        fail("Add your implementation here");
-      }
     }
 
   }
@@ -276,55 +238,6 @@ public class YetAnotherUtilityTest {
       fail("Add your implementation here");
     }
 
-    @Test
-    @DisplayName("isPrime for 1, 13, 21, 39, 53, 71 should be = false, true, false, false, true, true ")
-    void isPrime() {
-      List<Boolean> expectedResultsIterable = Arrays.asList(new Boolean[] { false, true, false, false, true, true });
-      List<Boolean> actualResultsIterable = new ArrayList<>();
-      actualResultsIterable.add(YetAnotherUtility.isPrime(1));
-      actualResultsIterable.add(YetAnotherUtility.isPrime(13));
-      actualResultsIterable.add(YetAnotherUtility.isPrime(21));
-      actualResultsIterable.add(YetAnotherUtility.isPrime(39));
-      actualResultsIterable.add(YetAnotherUtility.isPrime(53));
-      actualResultsIterable.add(YetAnotherUtility.isPrime(71));
-
-      //
-      // Supplier<String> message - creates String lazily (only if assertion fails)
-      fail("Add your implementation here");
-    }
-
-  }
-
-  /**
-   * @Nested class
-   *         Uses Assertions.assertLinesMatch():
-   *         <ul>
-   *         <li>assertLinesMatch(List&lt;String&gt;, List&lt;String&gt;)</li>
-   *         </ul>
-   * @author J Steven Perry
-   *
-   */
-  @Nested
-  @DisplayName("When using assertLinesMatch")
-  public class AssertLinesMatch {
-
-    @Test
-    @DisplayName("tokenize returns the correct tokens from the test string...")
-    public void testTokenize() {
-      String string = "This is a string of words,delimited by spaces, and, well, commas. Oh, and periods too.";
-      String delimiters = " ,.";
-
-      List<String> expectedTokens = Arrays.asList(new String[] {
-          "This", "is", "a", "string", "of", "words", "delimited",
-          "by", "spaces", "and", "well", "commas", "Oh",
-          "and", "periods", "too"
-      });
-
-      List<String> actualTokens = YetAnotherUtility.tokenize(string, delimiters);
-
-      fail("Add your implementation here");
-    }
-
   }
 
   /**
@@ -392,34 +305,6 @@ public class YetAnotherUtilityTest {
   @Nested
   @DisplayName("When using assertNotSame")
   public class AssertNotSame {
-
-    @Test
-    @DisplayName("tokenize returns the correct tokens from the test string...")
-    public void testTokenize() {
-      String string = "This is a string of words,delimited by spaces, and, well, commas. Oh, and periods too.";
-      String delimiters = " ,.";
-
-      List<String> expectedTokens = Arrays.asList(new String[] {
-          "This", "is", "a", "string", "of", "words", "delimited",
-          "by", "spaces", "and", "well", "commas", "Oh",
-          "and", "periods", "too"
-      });
-
-      List<String> actualTokens = YetAnotherUtility.tokenize(string, delimiters);
-      //
-      // The list that is returned is different
-      //
-      // Supplier<String> message - creates String lazily (only if assertion fails)
-      fail("Add your implementation here");
-
-      // As are the strings that are returned as well
-      for (int aa = 0; aa < expectedTokens.size(); aa++) {
-        //
-        // Supplier<String> message - creates String lazily (only if assertion fails)
-        fail("Add your implementation here");
-      }
-
-    }
 
     @Test
     @DisplayName("Different references to the same string are the same object...")
