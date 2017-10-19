@@ -53,6 +53,7 @@ import com.makotojava.learn.junit5.math.YetAnotherUtility;
  *
  */
 @DisplayName("Testing YetAnotherUtilityTest...")
+// @RunWith(JUnitPlatform.class)
 @Tag("solution")
 public class YetAnotherUtilityTest {
 

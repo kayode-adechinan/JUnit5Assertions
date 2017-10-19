@@ -39,6 +39,7 @@ import org.junit.jupiter.api.Test;
  *
  */
 @DisplayName("Testing YetAnotherUtility...")
+// @RunWith(JUnitPlatform.class)
 public class YetAnotherUtilityTest {
 
   /**
