@@ -40,8 +40,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
 import com.makotojava.learn.junit5.math.YetAnotherUtility;
 
@@ -55,7 +53,6 @@ import com.makotojava.learn.junit5.math.YetAnotherUtility;
  *
  */
 @DisplayName("Testing YetAnotherUtilityTest...")
-@RunWith(JUnitPlatform.class)
 @Tag("solution")
 public class YetAnotherUtilityTest {
 

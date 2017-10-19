@@ -28,8 +28,6 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
 /**
  * Tests the PrimeTime prime number utility class.
@@ -40,8 +38,7 @@ import org.junit.runner.RunWith;
  * @author J Steven Perry
  *
  */
-@DisplayName("Testing PrimeTime...")
-@RunWith(JUnitPlatform.class)
+@DisplayName("Testing YetAnotherUtility...")
 public class YetAnotherUtilityTest {
 
   /**
