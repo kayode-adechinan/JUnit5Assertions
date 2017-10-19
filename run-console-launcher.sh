@@ -22,20 +22,20 @@
 CONSOLE_LAUNCHER_JAR_ROOT=./target/lib
 echo CONSOLE_LAUNCHER_JAR_ROOT=${CONSOLE_LAUNCHER_JAR_ROOT}
 #
-CONSOLE_LAUNCHER_JAR=junit-platform-console-standalone-1.0.0-M4.jar
+CONSOLE_LAUNCHER_JAR=junit-platform-console-standalone-1.0.1.jar
 echo CONSOLE_LAUNCHER_JAR=${CONSOLE_LAUNCHER_JAR}
 #
 LIB_ROOT=./target/lib
 echo LIB_ROOT=${LIB_ROOT}
 #
-DEPENDENT_JAR_CLASSPATH=${LIB_ROOT}/junit-platform-runner-1.0.0-M4.jar:${LIB_ROOT}/commons-lang3-3.5.jar
+DEPENDENT_JAR_CLASSPATH=${LIB_ROOT}/junit-platform-runner-1.0.1.jar:${LIB_ROOT}/commons-lang3-3.5.jar
 echo DEPENDENT_JAR_CLASSPATH=${DEPENDENT_JAR_CLASSPATH}
 #
 TEST_CLASSES_ROOT=./target/classes:./target/test-classes/
 echo TEST_CLASSES_ROOT=${TEST_CLASSES_ROOT}
 #
 #EXCLUDE_TAGS='--exclude-tag advanced --exclude-tag someothertag'
-#EXCLUDE_TAGS='--exclude-tag solution'
+EXCLUDE_TAGS='--exclude-tag solution'
 echo EXCLUDE_TAGS=${EXCLUDE_TAGS}
 #
 echo Running Maven build to get things set up...

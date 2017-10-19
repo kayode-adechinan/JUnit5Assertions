@@ -14,7 +14,11 @@
  * limitations under the License.
  *
  */
-package com.makotojava.learn.junit5.math;
+package com.makotojava.learn.junit5.math.solution;
+
+import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Simple set of utilities. Just something to demonstrate tests.
@@ -42,8 +46,32 @@ public class YetAnotherUtility {
    */
   public static long[] computeFactors(long compoundInteger) {
     long[] ret = null;
-    //
-    // TODO: ADD YOUR IMPLEMENTATION HERE
+    if (compoundInteger > 0) {
+      //
+      Set<Long> factors = new TreeSet<>();
+      //
+      // The number itself is always a factor
+      factors.add(compoundInteger);
+      factors.add(1L);// And 1, of course
+      long upperLimit = compoundInteger / 2;
+      long trialDivisor = 2;
+      while (trialDivisor <= upperLimit) {
+        if (compoundInteger % trialDivisor == 0) {
+          factors.add(trialDivisor);
+        }
+        trialDivisor++;
+      }
+      //
+      // Now make a copy of the Set
+      ret = new long[factors.size()];
+      int aa = 0;// Oh my, can you figure out what this is used for?
+      Iterator<Long> iter = factors.iterator();
+      while (iter.hasNext()) {
+        ret[aa++] = iter.next();
+      }
+    } else if (compoundInteger < 0) {
+      throw new IllegalArgumentException("Candidate integer must be a positive number!");
+    }
     //
     return ret;
   }
