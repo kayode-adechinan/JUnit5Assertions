@@ -157,15 +157,6 @@ public class YetAnotherUtilityTest {
       }
     }
 
-    @Test
-    @DisplayName("isPrime for 1, 13, 21, 39, 53, 71 should be false, true, false, false, true, true")
-    void isPrime() {
-      //
-      // Supplier<String> message - creates String lazily (only if assertion fails)
-      fail("Add your implementation here");
-
-    }
-
   }
 
   /**
@@ -236,31 +227,6 @@ public class YetAnotherUtilityTest {
       fail("Add your implementation here");
     }
 
-  }
-
-  /**
-   * @Nested class
-   *         Uses Assertions.assertNotEquals():
-   *         <ul>
-   *         <li>assertNotEquals(Object)</li>
-   *         <li>assertNotEquals(Object, String)</li>
-   *         <li>assertNotEquals(Object, Supplier&lt;String&gt;)</li>
-   *         </ul>
-   * @author J Steven Perry
-   *
-   */
-  @Nested
-  @DisplayName("When using assertNotEquals...")
-  public class AssertNotEquals {
-
-    @Test
-    @DisplayName("isPrime for 1, 13, 21, 39, 53, 71 should be = false, true, false, false, true, true ")
-    void isPrime() {
-
-      //
-      // Supplier<String> message - creates String lazily (only if assertion fails)
-      fail("Add your implementation here");
-    }
   }
 
   /**
@@ -341,6 +307,49 @@ public class YetAnotherUtilityTest {
       //
       // Supplier<String> message - creates String lazily (only if assertion fails)
       fail("Add your implementation here");
+    }
+
+  }
+
+  /**
+   * @Nested class
+   *         Uses Assertions.assertSame():
+   *         <ul>
+   *         <li>assertSame(Object)</li>
+   *         <li>assertSame(Object, String)</li>
+   *         <li>assertSame(Object, Supplier&lt;String&gt;)</li>
+   *         </ul>
+   * @author J Steven Perry
+   *
+   */
+  @Nested
+  @DisplayName("When using assertSame")
+  public class AssertSame {
+
+    @Test
+    @DisplayName("Different references to the same string are the same object...")
+    public void testAssertSame() {
+      String expectedString = "This is a string of words,delimited by spaces, and, well, commas. Oh, and periods too.";
+      String actualString = expectedString;
+      //
+      // The list that is returned is different
+      //
+      // Supplier<String> message - creates String lazily (only if assertion fails)
+      fail("Add your implementation here");
+
+    }
+
+    @Test
+    @DisplayName("Different references to the same string are the same object...")
+    public void testAssertSameWithStringLiterals() {
+      String expectedString = "This is a string of words";
+      String actualString = "This is a string of words";
+      //
+      // The strings are .equals(), but different objects (or are they? no, no they're not)
+      //
+      // Supplier<String> message - creates String lazily (only if assertion fails)
+      fail("Add your implementation here");
+
     }
 
   }
@@ -473,49 +482,6 @@ public class YetAnotherUtilityTest {
       // assertTrue(BooleanSupplier, Supplier<String>)
       fail("Add your implementation here");
       // );
-    }
-
-  }
-
-  /**
-   * @Nested class
-   *         Uses Assertions.assertSame():
-   *         <ul>
-   *         <li>assertSame(Object)</li>
-   *         <li>assertSame(Object, String)</li>
-   *         <li>assertSame(Object, Supplier&lt;String&gt;)</li>
-   *         </ul>
-   * @author J Steven Perry
-   *
-   */
-  @Nested
-  @DisplayName("When using assertSame")
-  public class AssertSame {
-
-    @Test
-    @DisplayName("Different references to the same string are the same object...")
-    public void testAssertSame() {
-      String expectedString = "This is a string of words,delimited by spaces, and, well, commas. Oh, and periods too.";
-      String actualString = expectedString;
-      //
-      // The list that is returned is different
-      //
-      // Supplier<String> message - creates String lazily (only if assertion fails)
-      fail("Add your implementation here");
-
-    }
-
-    @Test
-    @DisplayName("Different references to the same string are the same object...")
-    public void testAssertSameWithStringLiterals() {
-      String expectedString = "This is a string of words";
-      String actualString = "This is a string of words";
-      //
-      // The strings are .equals(), but different objects (or are they? no, no they're not)
-      //
-      // Supplier<String> message - creates String lazily (only if assertion fails)
-      fail("Add your implementation here");
-
     }
 
   }
